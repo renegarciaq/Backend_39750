@@ -1,0 +1,29 @@
+form {
+  background-color: rgba(0, 0, 0, .15);
+  padding: 0.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  padding: 0.5rem, 1rem;
+}
+
+li:nth-child(odd) {
+  background-color: #dcf4c6;
+  text-align: center;
+  font-style: italic;
+  font-weight: 600;
+}

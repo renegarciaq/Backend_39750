@@ -1,0 +1,22 @@
+<h1>Nuestros productos desde la base de datos!</h1>
+
+{{#if products.length}}
+<section class="productsContainer">
+    {{#each products}}
+    <div class="productsCard">
+        <h3>Nombre: {{title}}</h3>
+        <h4>Descripcion: {{description}}</h4>
+        <h4>Precio: {{price}}</h4>
+        <img src="{{thumbnail}}" />
+        <div class="buttons">
+            <button><a href="">mas detalles</a></button>
+            <button onclick="addProduct({{_id}})" id="addButton" class="plusButtond">agregar al carrito</button>
+        </div>
+    </div>
+    {{/each}}
+</section>
+{{else}}
+<h3>Error cargando los productos, por favor intente recargar la pagina 🔃</h3>
+{{/if}}
+
+<script src="/js/products.js"></script>

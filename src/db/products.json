@@ -1,0 +1,57 @@
+[
+	{
+		"title": "Anillo de oro",
+		"price": 300,
+		"code": "101",
+		"stock": 10,
+		"category": "Anillos",
+		"description": "Anillo Solitario Oro Amarillo 18 K Circón",
+		"status": true,
+		"thumbnail": "sin imagen",
+		"id": 1
+	},
+	{
+		"title": "Collar de plata",
+		"price": 40,
+		"code": "201",
+		"stock": 20,
+		"category": "Collares",
+		"description": "Collar Spark de Plata con Cristal Cube Blanco",
+		"status": true,
+		"thumbnail": "sin imagen",
+		"id": 2
+	},
+	{
+		"title": "Aros de Oro",
+		"price": 250,
+		"code": "301",
+		"stock": 10,
+		"category": "Aros",
+		"description": "Aros de Oro amarillo 18k",	
+		"status": true,
+		"thumbnail": "sin imagen",
+		"id": 3
+	},
+	{
+		"title": "Reloj titanio",
+		"price": 120,
+		"code": "401",
+		"stock": 50,
+		"category": "Relojes",
+		"description": "Reloj Festina Calendario",
+		"status": true,
+		"thumbnail": "sin imagen",
+		"id": 4
+	},
+	{
+		"title": "Reloj Longines",
+		"price": 1000,
+		"code": "402",
+		"stock": 40,
+		"category": "Relojes",
+		"description": "Reloj Mujer de Oro Cristales",
+		"status": true,	
+		"thumbnail": "sin imagen",
+		"id": 5
+	}
+]

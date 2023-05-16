@@ -1,0 +1,36 @@
+<div>
+    {{!-- {{#if data.value}} --}}
+    {{#each data}}
+    <ul class="list-group">
+        <li>{{this.user}} dice: {{this.message}}</li>
+    </ul>
+    {{/each}}
+    {{!-- {{else}} --}}
+    {{!-- <h3>No hay mensajes en este momento</h3> --}}
+    {{!-- {{/if}} --}}
+</div>
+{{!-- <div>
+    <form action="">
+        <input type="text" id="chatbox" class="form-control" placeholder="ingrese el mensaje">
+        <button class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+<div>
+    <ul id="messageLogs">
+
+    </ul>
+</div> --}}
+
+<div>
+    <h2>socket io</h2>
+    <input type="text" id="chatbox">
+    <ul id="SARASA">
+
+    </ul>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js "></script>
+<script src="/static/js/chat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+    integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+    crossorigin="anonymous"></script>

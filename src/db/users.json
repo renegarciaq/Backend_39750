@@ -1,0 +1,46 @@
+[
+  {
+    "first_name": "rene esteban",
+    "lastName": "garcia",
+    "age": "37",
+    "address": "san nicolas 1480",
+    "email": "rene@gmail.com",
+    "genero": "masculino",
+    "password": "molly123",
+    "id": 1,
+    "salt": "CeQu0dzqoW03QAqY3rmbkhimk+NhdtkU3og7dNEvGjiqfHlmVykJsoFZxse0PMEsnOQyUHxvfmQI/t+XKCyulA4wgweKEhu81k3nzdVAbQcFEP2eWoucfBdpFJvlAK/gKK4uXTdzxHZj9pyfzGLM/X8U0HCgWjnHwP6PfQ26LLY="
+  },
+  {
+    "first_name": "rene ",
+    "lastName": "garcia",
+    "age": "38",
+    "address": "llano subercaseaux 3747",
+    "email": "esteban@gmail.com",
+    "genero": "masculino",
+    "password": "123456",
+    "id": 2,
+    "salt": "MXOBnN9zUhQHZESQ0icjO/D1ji68j2M4pWV0sirnWqT+7afct++ANkzWPq6h3q6SJyyXML2CMbBGgnxSfRrJY4QLmra+EjvP1KNhrBW9qCfEERjg3CHo2R7yhaw/2fhkvaYLfOE+TMH9YBo6txzVttGMet2ABtdkWCUaujfI6ck="
+  },
+  {
+    "first_name": "denisse",
+    "lastName": "echague",
+    "age": "40",
+    "address": "la florida 1",
+    "email": "deni@gmail.com",
+    "genero": "femenino",
+    "password": "654321",
+    "id": 3,
+    "salt": "bJsJ+2IX2Tk9z6V+7on7iiaiQ0w8YbqJzG2xPw0mXti389XYZ2XXTU4UTDY/XfJ7LTX5KifFNe+Pu2RlS5GmVupzf5oID6RqdZV2o85wYdZiHzFszSZCYEPBrcpd0EGY7ll9tuD7m97KnzEtfsV6A/UloFG2UoVLbLG96GvcD9g="
+  },
+  {
+    "first_name": "esteban",
+    "lastName": "quintana",
+    "age": 37,
+    "address": "alameda 123",
+    "genero": "masculino",
+    "password": "esteban1",
+    "email": "esteban@gmail.com",
+    "id": 4,
+    "salt": "6ewAbOVlRR0Q3LtSZATjtS8dlcp2fTJWtRw2b7yv5eRi0hP+Ec57BCKRWPgxZf3zFKhoPv+17FItryCqLkk426ElPeaDiDkLlWvj3ZBI4BVaThN9lDCiZhXaYeZKiNpjBRxVrFWmH1Wy0eQ0fqRNkeNHHGpgstp7rmdFFRlRusk="
+  }
+]
