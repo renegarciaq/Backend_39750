@@ -1,4 +1,5 @@
 const { userModel } = require('./model/users.model')
+const { compareData } = require('../../utils/usersHash')
 
 
 class UserManagerMongo {
@@ -23,18 +24,53 @@ class UserManagerMongo {
       return new Error(error)
     }
   }
-  async updateUser(uid, data) {
+  updateUser = async (uid, data) => {
     try {
       return await userModel.findByIdAndUpdate(uid, data)
     } catch (error) {
       return new Error(error)
     }
   }
-  async deleteUser(uid) {
+  deleteUser = async (uid) => {
     try {
       return await userModel.findByIdAndDelete({ _id: uid })
     } catch (error) {
       return new Error(error)
+    }
+  }
+
+  createUsers = async (user) => {
+    try {
+      const { email } = user
+      const alreadyExist = await userModel.findOne({ email })
+      if (!alreadyExist) {
+        const newUser = await userModel.create(user)
+        return newUser
+      } else {
+        return new Error('User already exist')
+      }
+    } catch (error) {
+      console.log(`Error creating user: ${error.message}`)
+    }
+  }
+
+  loginUser = async (email, password) => {
+    try {
+      const user = await userModel.findOne({ email })
+      if (!user) {
+        return res.redirect('/loginError')
+      }
+      const passwordOk = await compareData(password, user.password)
+      if (!passwordOk) {
+        return res.redirect('/loginError')
+      }
+      if (user) {
+        return user
+      } else {
+        throw new Error('Invalid username or password')
+      }
+    } catch (error) {
+      console.log(`Error loging user: ${error.message}`)
     }
   }
 }

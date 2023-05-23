@@ -1,4 +1,4 @@
-<h1>Nuestros productos desde la base de datos!</h1>
+<h1>Nuestros productos desde la base de datos</h1>
 
 {{#if products.length}}
 <section class="productsContainer">
@@ -18,5 +18,15 @@
 {{else}}
 <h3>Error cargando los productos, por favor intente recargar la pagina 🔃</h3>
 {{/if}}
+<center>
+    {{#if hasPrevPage}}
+    <a href={{prevLink}}><button>Anterior</button></a>
+    {{/if}}
+
+    {{#if hasNextPage}}
+    <a href={{nextLink}}><button>Siguiente</button></a>
+    {{/if}}
+</center>
+</div>
 
 <script src="/js/products.js"></script>

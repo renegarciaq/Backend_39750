@@ -1,11 +1,12 @@
 const { Router } = require('express')
 const UserManager = require('../dao/fileSystem/usersManager')
 const { dirname } = require('path')
+const { auth } = require('../middlewares/auth.middlewares')
 
 const router = Router()
 const usersList = new UserManager(`${dirname(__dirname)}/db/users.json`)
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         const users = await usersList.getUsers()
         console.log(users);

@@ -1,18 +1,13 @@
 const { Schema, model } = require('mongoose')
-// const mongoosePaginate = require('mongoose-paginate-v2') // Not used in this example
 
 const collection = 'users'
 
 const userSchema = new Schema({
-  first_name: String,
-  last_name: String,
-  age: Number,
-  address: String,
-  gender: String,
-  email: {
-    type: String,
-    unique: true
-  }
+  first_name: { type: String, required: true },
+  last_name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  age: { type: Number, required: true },
+  password: { type: String, required: true },
 })
 
 const userModel = model(collection, userSchema)

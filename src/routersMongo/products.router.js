@@ -4,9 +4,19 @@ const { userModel } = require('../dao/mongoDb/model/users.model')
 
 const router = Router()
 
+
 router.get("/", async (req, res) => {
+    console.log('log linea 9 products router mongo', req.session)
+    let { first_name, last_name, age, email } = req.session
+    const userData = {
+        first_name,
+        last_name,
+        age,
+        email
+    }
+    console.log('log linea 17 products router mongo', userData)
     const {
-        limit = 10,
+        limit = 12,
         page = 1,
         sort = "asc",
         title = "",
@@ -56,9 +66,16 @@ router.get("/", async (req, res) => {
                 ? `http://localhost:8080/api/products?page=${products.nextPage}`
                 : null
         }
-        res.status(200).send({
-            status: "success",
-            payload: products.docs, info
+        const productsList = products.docs
+        const { hasPrevPage, hasNextPage, page, prevLink, nextLink } = info
+        res.render("products", {
+            style: "products.css",
+            productsList,
+            hasPrevPage,
+            hasNextPage,
+            page,
+            prevLink,
+            nextLink,
         })
     } catch (err) {
         console.log(err.message)
@@ -107,7 +124,7 @@ router.put('/:pid', async (req, res) => {
     try {
         const { pid } = req.params
         const data = req.body
-        let result = await productManager.updateProduct({ _id: pid }, data)
+        let result = await productManager.updateProduct(pid, data)
         res.status(200).send({
             status: 'success',
             payload: result

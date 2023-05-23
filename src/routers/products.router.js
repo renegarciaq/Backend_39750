@@ -2,12 +2,13 @@ const { Router } = require('express')
 const { uploader } = require('../utils/multer')
 const ProductManager = require('../dao/fileSystem/productsManager')
 const { dirname } = require('path')
+const { auth } = require('../middlewares/auth.middlewares')
 
 const router = Router()
 const productsList = new ProductManager(`${dirname(__dirname)}/db/products.json`)
 const notFound = { status: 'error', error: "Product not found" }
 
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
     try {
         const limit = req.query.limit
         const products = await productsList.getProducts(limit)

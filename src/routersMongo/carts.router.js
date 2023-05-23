@@ -5,6 +5,13 @@ const productManager = require('../dao/mongoDb/products.mongo.js')
 const router = Router()
 const notFound = { error: "Cart not found" }
 
+router.get("/cartsMongo", (req, res) => {
+    res.render("cartsId", {
+        style: "carts.css",
+        tittle: "Carts",
+    })
+})
+
 router.post("/", async (req, res) => {
     try {
         const cart = await cartManager.createCart()
@@ -20,11 +27,12 @@ router.get("/:cid", async (req, res) => {
     try {
         const { cid } = req.params;
         const cart = await cartManager.getById(cid);
-        !cart ? res.status(404).send(notFound)
-            : res.status(200).send({
-                status: 'success',
-                payload: cart
-            })
+        const cartsProducts = cart.products
+        res.render("cartsId", {
+            style: "carts.css",
+            title: "CartsId",
+            cartsProducts
+        })
     } catch (error) {
         return console.log(error)
     }

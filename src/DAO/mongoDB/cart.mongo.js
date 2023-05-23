@@ -29,10 +29,12 @@ class CartManagerMongo {
         .populate("products.product")
         .lean()
       if (!cart) {
-        throw new Error(`No existe.`)
-      } else {
-        return cart
+        return { status: 'error', message: 'Carrito no existe' }
       }
+      if (cart.products.length === 0) {
+        return { status: 'error', message: 'No hay productos en el carrito.' }
+      }
+      return { status: 'success', data: cart }
     } catch (error) {
       console.log(
         `Error buscando el carrito con el id solicitado: ${error.message}`

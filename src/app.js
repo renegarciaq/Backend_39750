@@ -1,6 +1,9 @@
 const express = require('express')
+const session = require('express-session')
 const handlebars = require('express-handlebars')
 const cookieParser = require('cookie-parser')
+const FileStore = require('session-file-store')
+const {create} = require('connect-mongo')
 const { Server } = require('socket.io')
 const http = require('http')
 const routers = require('./routers/index.router')
@@ -12,6 +15,7 @@ const UsersManager = require('./dao/fileSystem/usersManager')
 const chatManager = require('./dao/mongoDb/chat.mongo')
 const viewRouterMongo = require('./routersMongo/views.router.mongo')
 const CartManager = require('./dao/mongoDb/cart.mongo')
+const cookies = require('./routers/cookies.router')
 
 
 const productsList = new ProductManager(__dirname + '/db/products.json')
@@ -42,15 +46,44 @@ app.set('view engine', 'handlebars')
 
 app.use('/static', express.static(__dirname + '/public'))
 
-app.use(cookieParser())
+app.use(cookieParser('p4l4br4c3cr3t4r3n3'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// const fileStore = FileStore(session)
+// app.use(session({
+//     store: new fileStore({
+//         ttl: 100000*60,
+//         path: './session',
+//         retries: 0
+//     }),
+//     secret: 's4r4s4s3cr3t0s4',
+//     resave: true,
+//     saveUninitialized: true
+// }))
+
+
+//mongo
+app.use(session({
+    store: create({
+        mongoUrl: 'mongodb+srv://renegarciaq:coder39750@cluster0.y5tyvlw.mongodb.net/?retryWrites=true&w=majority',
+        mongoOptions: {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        },
+        ttl: 10
+    }),
+    secret: 's4r4s4s3cr3t0s4',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 100000 * 60 }
+}))
 
 app.use("/api", routers)
 app.use('/api', routersMongo)
 app.use("/", viewsRouter)
 app.use('/', viewRouterMongo)
+app.use('/cookies', cookies)
 
 io.on('connection', async socket => {
     console.log('Nuevo cliente conectado', socket.id)
@@ -103,7 +136,9 @@ io.on('connection', async socket => {
     })
     socket.on("cart", async id => {
         const cart = await CartManager.getById(id)
-        socket.emit("cart", cart);
+        socket.emit("cart", {
+            cart
+        })
     })
 })
 

@@ -73,9 +73,9 @@ class ProductManagerMongo {
     try {
       const productFinded = await this.getById(id);
       if (productFinded) {
-        await productsModel.findOneAndUpdate({ _id: id }, product)
+        await productsModel.findOneAndUpdate({ _id: id }, data)
         const updatedProduct = await this.getById(id)
-        return updatedProduct
+        return {status: "success", data: updatedProduct}
       } else {
         throw new Error(`No se encontro el producto con el id solicitado`)
       }
