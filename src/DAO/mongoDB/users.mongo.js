@@ -39,7 +39,7 @@ class UserManagerMongo {
     }
   }
 
-  createUsers = async (user) => {
+  createUser = async (user) => {
     try {
       const { email } = user
       const alreadyExist = await userModel.findOne({ email })

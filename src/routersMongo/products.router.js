@@ -60,10 +60,10 @@ router.get("/", async (req, res) => {
             hasPrevPage: products.hasPrevPage,
             hasNextPage: products.hasNextPage,
             prevLink: products.hasPrevPage
-                ? `http://localhost:8080/api/products?page=${products.prevPage}`
+                ? `http://localhost:8080/api/productsMongo?page=${products.prevPage}`
                 : null,
             nextLink: products.hasNextPage
-                ? `http://localhost:8080/api/products?page=${products.nextPage}`
+                ? `http://localhost:8080/api/productsMongo?page=${products.nextPage}`
                 : null
         }
         const productsList = products.docs

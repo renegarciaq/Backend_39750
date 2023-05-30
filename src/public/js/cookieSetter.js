@@ -1,6 +1,6 @@
 const form = document.querySelector('#cookieForm');
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const data = new FormData(form);

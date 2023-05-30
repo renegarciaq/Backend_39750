@@ -69,13 +69,13 @@ class ProductManagerMongo {
     }
   }
 
-  updateProduct = async (id, product) => {
+  updateProduct = async (id, data) => {
     try {
       const productFinded = await this.getById(id);
       if (productFinded) {
         await productsModel.findOneAndUpdate({ _id: id }, data)
         const updatedProduct = await this.getById(id)
-        return {status: "success", data: updatedProduct}
+        return {status: "success", payload: updatedProduct}
       } else {
         throw new Error(`No se encontro el producto con el id solicitado`)
       }

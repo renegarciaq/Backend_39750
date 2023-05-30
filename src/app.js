@@ -46,7 +46,7 @@ app.set('view engine', 'handlebars')
 
 app.use('/static', express.static(__dirname + '/public'))
 
-app.use(cookieParser('p4l4br4c3cr3t4r3n3'))
+app.use(cookieParser('p4l4br4c3cr3t4m4rt1n'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -93,7 +93,7 @@ io.on('connection', async socket => {
         if (id) {
             await productsList.deleteById(parseInt(pid.id))
             const data = await productsList.getProducts()
-            return io.emit('newList', data)
+            return io.emit('newList', dataError)
         }
         const dataError = { status: "error", message: "Product not found" }
         return socket.emit('newList', dataError)
@@ -102,7 +102,7 @@ io.on('connection', async socket => {
         const productAdd = await productsList.addProduct(data)
         if (productAdd.status === 'error') {
             let errorMess = productAdd.message
-            socket.emit('server:producAdd', { status: 'error', errorMess })
+            socket.emit('server:productAdd', { status: 'error', errorMess })
         }
         const newData = await productsList.getProducts()
         console.log('log de app', newData);
@@ -129,8 +129,6 @@ io.on('connection', async socket => {
         return io.emit('server:userAdd', newData)
     })
     socket.on('message', async data => {
-        // console.log(data);
-        // mensages.push(data)
         const messages = await chatManager.addMessages(data)
         io.emit('messageLog', messages)
     })
